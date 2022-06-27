@@ -77,13 +77,11 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ToDoList',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -135,3 +133,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import django_heroku
+django_heroku.settings(locals())
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+
+DEBUG = False # in settings.py
+
+ALLOWED_HOSTS = ['sravan10.herokuapp.com', 'localhost', '127.0.0.1'] # in settings.py
